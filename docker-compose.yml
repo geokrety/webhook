@@ -1,0 +1,27 @@
+version: '3'
+services:
+    updater:
+        build: .
+        image: webhook:2.6.8
+        container_name: gk-updater
+        environment:
+            - TIME_ZONE=UTC
+        volumes:
+            - /home/geokrety/GEOKRETY-LEGACY-PROD/src:/home/geokrety/GEOKRETY-LEGACY-PROD/src
+            - /home/geokrety/GEOKRETY-LEGACY-REC/src:/home/geokrety/GEOKRETY-LEGACY-REC/src
+            - /home/geokrety/GEOKRETY-LEGACY-BOLY38/src:/home/geokrety/GEOKRETY-LEGACY-BOLY38/src
+            - /var/run/docker.sock:/var/run/docker.sock
+        labels:
+            - "traefik.enable=true"
+            - "traefik.backend=geokrety-legacy-rec-updater"
+            - "traefik.frontend.rule=Host:updater.geokrety.kumy.org"
+            - "traefik.backend.loadbalancer.method=drr"
+            - "traefik.docker.network=srv_geokrety-front"
+        networks:
+            - front
+        restart: unless-stopped
+
+networks:
+    front:
+        external:
+            name: srv_geokrety-front
