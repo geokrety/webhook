@@ -35,8 +35,8 @@
     }
   },
   {
-    "id": "rec",
-    "execute-command": "/usr/local/bin/gkrec-update.sh",
+    "id": "staging",
+    "execute-command": "/usr/local/bin/gkstaging-update.sh",
     "include-command-output-in-response": true,
     "trigger-rule":
     {

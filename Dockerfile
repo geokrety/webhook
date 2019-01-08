@@ -14,7 +14,7 @@ COPY webhook /usr/local/bin/
 COPY hooks.json /etc/webhook/hooks.json
 
 COPY gkprod-update.sh /usr/local/bin/
-COPY gkrec-update.sh /usr/local/bin/
+COPY gkstaging-update.sh /usr/local/bin/
 COPY gkboly38-update.sh /usr/local/bin/
 
 EXPOSE 9000
