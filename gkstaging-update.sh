@@ -4,5 +4,5 @@ set -e
 
 cd /home/geokrety/GEOKRETY-LEGACY-STAGING/src
 git fetch
-git rebase
+git reset --hard origin/master
 make updatestaging
